@@ -64,13 +64,30 @@ function App() {
               {/* Added a little music note hint */}
               {!isPlaying && <p className="text-muted small mb-2">(Tap anywhere for sound ♪)</p>}
               
-              <pre className="text-success mb-4" style={{lineHeight: '10px', fontSize: '10px'}}>
-{`
-   _\\/_   _\\/_   _\\/_
-    /\\     /\\     /\\
-   |  |   |  |   |  |
-`}
-              </pre>
+              {/* The Pixel Garden */}
+          <div className="sprite-container">
+            {/* Flower 1 - Left */}
+            <img 
+              src="/red.jpg" 
+              alt="Pixel Flower" 
+              className="pixel-art idle-bob" 
+            />
+            
+            {/* Flower 2 - Center (Maybe slightly larger or different?) */}
+            <img 
+              src="/mixed.jpg" 
+              alt="Pixel Flower" 
+              className="pixel-art idle-bob delay-1"
+              style={{ transform: 'scale(1.2)' }} // Make the middle one bigger
+            />
+            
+            {/* Flower 3 - Right */}
+            <img 
+              src="/pink.jpg" 
+              alt="Pixel Flower" 
+              className="pixel-art idle-bob delay-2" 
+            />
+          </div>
 
               <p className="card-text mb-5" style={{lineHeight: '1.8'}}>
                 PLAYER 1 [JAYDIN] HAS ENCOUNTERED A WILD VALENTINE!<br/><br/>

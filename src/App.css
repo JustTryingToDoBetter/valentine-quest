@@ -45,3 +45,35 @@ body {
   padding-top: 50px;
   text-align: center;
 }
+
+/* Force images to stay sharp and blocky */
+.pixel-art {
+  image-rendering: pixelated; /* Chrome/Safari */
+  image-rendering: crisp-edges; /* Firefox */
+  width: 100%; 
+  max-width: 80px; /* Adjust based on your image size */
+}
+
+/* The "Idle" animation - creates that breathing/bobbing effect found in old games */
+.idle-bob {
+  animation: bob 2s infinite ease-in-out;
+}
+
+/* We delay the animation on some items so they don't all move in perfect sync */
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+
+@keyframes bob {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); } /* Moves up 10 pixels */
+  100% { transform: translateY(0px); }
+}
+
+/* Container for the garden row */
+.sprite-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between flowers */
+  margin-bottom: 30px;
+  align-items: flex-end; /* Aligns them at the bottom "ground" level */
+}
