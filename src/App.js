@@ -1,36 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
   const [accepted, setAccepted] = useState(false);
-  
-  // State to track the style of the "No" button
   const [noStyle, setNoStyle] = useState({});
+  
+  // Audio State
+  const [audio] = useState(new Audio('/A Lonely Cherry Tree.mp3')); 
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Audio Logic: Play on first interaction
+  const startAudio = () => {
+    if (!isPlaying) {
+      audio.loop = true; // Loop the music forever
+      audio.volume = 0.5; // Set volume to 50% so it's not too loud
+      audio.play().catch(e => console.log("Audio play failed:", e));
+      setIsPlaying(true);
+    }
+  };
+
+  // Cleanup: Stop music if component unmounts (rare in this app, but good practice)
+  useEffect(() => {
+    return () => {
+      audio.pause();
+    };
+  }, [audio]);
 
   const handleYes = () => {
     setAccepted(true);
+    // Optional: Change music on success? 
+    // audio.src = '/victory.mp3'; audio.play();
   };
 
   const handleNo = () => {
     alert("Nice try! But you really can't say no.");
   };
 
-  // The logic to make the button run away
   const moveNoButton = () => {
-    const x = Math.random() * (window.innerWidth - 100); // Subtract approx button width
-    const y = Math.random() * (window.innerHeight - 50); // Subtract approx button height
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
     
     setNoStyle({
       position: 'absolute',
       left: `${x}px`,
       top: `${y}px`,
-      transition: 'all 0.1s ease' // Smooth movement, but fast enough to dodge
+      transition: 'all 0.1s ease'
     });
   };
 
   return (
-    <div className="container">
+    // We add onClick={startAudio} to the main container. 
+    // As soon as she touches the screen to scroll or click a button, music starts.
+    <div className="container" onClick={startAudio} onTouchStart={startAudio}>
       {!accepted ? (
         <div className="game-screen">
           <h1 className="mb-5 text-warning" style={{ textShadow: '4px 4px #000' }}>
@@ -39,6 +61,9 @@ function App() {
           
           <div className="card bg-dark text-white p-4 mx-auto" style={{maxWidth: '600px'}}>
             <div className="card-body">
+              {/* Added a little music note hint */}
+              {!isPlaying && <p className="text-muted small mb-2">(Tap anywhere for sound ♪)</p>}
+              
               <pre className="text-success mb-4" style={{lineHeight: '10px', fontSize: '10px'}}>
 {`
    _\\/_   _\\/_   _\\/_
@@ -60,7 +85,6 @@ function App() {
                   PRESS START (YES)
                 </button>
                 
-                {/* The Runaway Button */}
                 <button 
                   className="btn btn-danger btn-lg px-4"
                   style={noStyle}
