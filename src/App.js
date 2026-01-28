@@ -5,24 +5,24 @@ import './App.css';
 function App() {
   const [level, setLevel] = useState(0); // 0 = Intro, 1 = Reason 1, 2 = Reason 2... Last = Question
   const [noStyle, setNoStyle] = useState({});
-  const [audio] = useState(new Audio('/song.mp3'));
+  const [audio] = useState(new Audio('/A Lonely Cherry Tree.mp3'));
   const [isPlaying, setIsPlaying] = useState(false);
 
   // --- STORY DATA: EDIT THIS SECTION ---
   const story = [
     {
       title: "LEVEL 1: THE BEGINNING",
-      image: "/flower.png", // You can use different images for each stage!
+      image: "/red.jpg", // You can use different images for each stage!
       text: "Player 1 (Jaydin) creates a new server. Player 2 joins the game. The adventure begins."
     },
     {
       title: "LEVEL 5: CO-OP MODE",
-      image: "/flower.png", 
+      image: "/mixed.jpg", 
       text: "Scanning database... Finding reasons why we make the best team:\n\n1. You put up with my coding bugs.\n2. Your smile restores my HP."
     },
     {
       title: "LEVEL 10: THE ACHIEVEMENT",
-      image: "/flower.png", 
+      image: "/pink.jpg", 
       text: "Achievement Unlocked: 'Found The One'.\n\nStats:\nHAPPINESS: 100%\nLOVE: 9999+"
     }
   ];
