@@ -5,6 +5,9 @@ body {
   background-color: #212529; /* Dark background like a game terminal */
   font-family: 'Press Start 2P', cursive; /* The 8-bit font */
   color: white;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
 }
 
 /* Override Bootstrap's rounded corners to make them square */
