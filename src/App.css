@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
-}
+/* Import the retro font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  background-color: #212529; /* Dark background like a game terminal */
+  font-family: 'Press Start 2P', cursive; /* The 8-bit font */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Override Bootstrap's rounded corners to make them square */
+.btn, .card, .form-control {
+  border-radius: 0 !important;
+  border: 4px solid white; /* Thick retro borders */
+  box-shadow: 4px 4px 0px #000; /* Retro shadow effect */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-primary {
+  background-color: #ff69b4; /* Hot pink for Valentine's */
+  border-color: white;
+}
+
+.btn-primary:hover {
+  background-color: #d14796;
+  border-color: white;
+  transform: translate(2px, 2px); /* Click effect */
+  box-shadow: 2px 2px 0px #000;
+}
+
+.pixel-heart {
+  color: red;
+  font-size: 50px;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.container {
+  padding-top: 50px;
+  text-align: center;
 }
