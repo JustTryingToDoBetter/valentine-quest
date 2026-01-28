@@ -1,39 +1,90 @@
-/* Import the retro font */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-body {
+/* FORCE THE DARKNESS */
+html, body {
+  height: 100%;
   margin: 0;
-  background-color: linear-gradient(to bottom, #2c3e50, #000000); /* Dark background like a game terminal */
-  font-family: 'Press Start 2P', cursive; /* The 8-bit font */
+  overflow: hidden; /* Stop scrollbars */
+  background: #0f0f0f !important; /* Overrides Bootstrap white */
+  font-family: 'Press Start 2P', cursive;
   color: white;
-  overflow: hidden;
-  height: 100vh;
-
 }
 
-/* Override Bootstrap's rounded corners to make them square */
-.btn, .card, .form-control {
+/* THE CONTAINER */
+.container {
+  position: relative;
+  z-index: 2; /* Puts the game ABOVE the stars */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* RETRO CARD STYLING */
+.card {
+  background-color: rgba(0, 0, 0, 0.9) !important; /* Mostly black, slight see-through */
+  border: 4px solid #fff;
+  box-shadow: 8px 8px 0px #000; /* Hard pixel shadow */
+  image-rendering: pixelated;
+}
+
+/* BUTTON STYLING */
+.btn {
   border-radius: 0 !important;
-  border: 4px solid white; /* Thick retro borders */
-  box-shadow: 4px 4px 0px #000; /* Retro shadow effect */
+  border: 4px solid white;
+  box-shadow: 4px 4px 0px #000;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 .btn-primary {
-  background-color: #ff69b4; /* Hot pink for Valentine's */
-  border-color: white;
+  background-color: #ff69b4 !important; /* Hot Pink */
+  border-color: white !important;
 }
 
-.btn-primary:hover {
-  background-color: #d14796;
-  border-color: white;
-  transform: translate(2px, 2px); /* Click effect */
-  box-shadow: 2px 2px 0px #000;
+.btn-danger {
+  background-color: #ff0000 !important;
 }
 
+/* --- THE MOVING BACKGROUND (MAGIC STARFIELD) --- */
+
+/* Function to generate stars using box-shadows */
+/* We create 3 layers of stars moving at different speeds */
+
+#stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 1744px 122px #FFF , 134px 1321px #FFF , 92px 859px #FFF, 1843px 299px #FFF, 100px 100px #FFF, 500px 300px #FFF, 800px 100px #FFF, 300px 600px #FFF, 800px 800px #FFF, 1000px 400px #FFF;
+  animation: animStar 50s linear infinite;
+}
+
+#stars2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 800px 500px #FFF , 1200px 200px #FFF , 400px 600px #FFF, 100px 1000px #FFF, 1500px 800px #FFF;
+  animation: animStar 100s linear infinite;
+}
+
+#stars3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 200px 200px #FFF , 600px 900px #FFF , 1200px 500px #FFF;
+  animation: animStar 150s linear infinite;
+}
+
+/* This makes them scroll UP so it looks like you are flying DOWN/FORWARD */
+@keyframes animStar {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+
+/* UTILITIES */
 .pixel-heart {
   color: red;
-  font-size: 50px;
-  animation: beat 1s infinite;
+  font-size: 60px;
+  animation: beat 0.8s infinite;
 }
 
 @keyframes beat {
@@ -42,60 +93,19 @@ body {
   100% { transform: scale(1); }
 }
 
-.container {
-  padding-top: 50px;
-  text-align: center;
-}
-
-/* Force images to stay sharp and blocky */
 .pixel-art {
-  image-rendering: pixelated; /* Chrome/Safari */
-  image-rendering: crisp-edges; /* Firefox */
-  width: 100%; 
-  max-width: 80px; /* Adjust based on your image size */
+  image-rendering: pixelated;
 }
 
-/* The "Idle" animation - creates that breathing/bobbing effect found in old games */
 .idle-bob {
   animation: bob 2s infinite ease-in-out;
 }
 
-/* We delay the animation on some items so they don't all move in perfect sync */
-.delay-1 { animation-delay: 0.5s; }
-.delay-2 { animation-delay: 1s; }
-
 @keyframes bob {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); } /* Moves up 10 pixels */
+  50% { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
 }
 
-/* Container for the garden row */
-.sprite-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Space between flowers */
-  margin-bottom: 30px;
-  align-items: flex-end; /* Aligns them at the bottom "ground" level */
-}
-
-/* Creating the scrolling stars effect with CSS shadows */
-.stars {
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow: 10px 10px white, 20px 50px white, 150px 200px white, 300px 300px white, 50px 400px white;
-  animation: animStar 50s linear infinite;
-}
-
-@keyframes animStar {
-  from { transform: translateY(0px); }
-  to { transform: translateY(-2000px); }
-}
-
-/* Make the card translucent so we can see the cool background */
-.card {
-  background-color: rgba(0, 0, 0, 0.85) !important; 
-  border: 4px solid #fff;
-  box-shadow: 8px 8px 0px #000;
-}
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
