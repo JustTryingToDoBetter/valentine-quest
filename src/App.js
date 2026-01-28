@@ -95,9 +95,9 @@ function App() {
           <div className="card bg-dark text-white p-4 mx-auto" style={{maxWidth: '600px'}}>
              <div className="card-body">
                 <div className="sprite-container">
-                  <img src="/flower.png" className="pixel-art idle-bob" alt="flower"/>
-                  <img src="/flower.png" className="pixel-art idle-bob delay-1" style={{transform: 'scale(1.2)'}} alt="flower"/>
-                  <img src="/flower.png" className="pixel-art idle-bob delay-2" alt="flower"/>
+                  <img src="/red.jpg" className="pixel-art idle-bob" alt="flower"/>
+                  <img src="/mixed.jpg" className="pixel-art idle-bob delay-1" style={{transform: 'scale(1.2)'}} alt="flower"/>
+                  <img src="/pink.jpg" className="pixel-art idle-bob delay-2" alt="flower"/>
                 </div>
                 <p className="card-text mb-5">
                   WARNING: WILD VALENTINE APPEARED!<br/><br/>
